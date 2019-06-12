@@ -1,0 +1,15 @@
+{
+  "name": "csv_to_json",
+  "version": "1.0.0",
+  "description": "command line tool which allows the user to convert CSV files to JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "csvToJson": "./app.js",
+    "jsonToCsv": "./advancedApp.js"
+  },
+  "author": "Katsiaryna Shenets",
+  "license": "ISC"
+}
