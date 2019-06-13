@@ -1,4 +1,13 @@
-const { SEPARATORS } = require("./constants");
+const getCommands = () => {
+  const args = process.argv.slice(2);
+  const enteredCommands = {};
+
+  for (let i = 0; i < args.length; i += 2) {
+    enteredCommands[args[i]] = args[i + 1];
+  }
+
+  return enteredCommands;
+};
 
 const determineMost = (chunk, items) => {
   const itemCount = {};
@@ -24,12 +33,6 @@ const determineMost = (chunk, items) => {
   return maxChar;
 };
 
-const autoDetectSeparator = csv => {
-  let lines = csv.split('\r');
-
-  return determineMost(lines[0], SEPARATORS);
-};
-
 const toColumnName = colNum => {
   let res;
   for (res = "", a = 1, z = 26; (colNum -= a) >= 0; a = z, z *= 26) {
@@ -38,11 +41,11 @@ const toColumnName = colNum => {
   return res;
 };
 
-
 const errorLog = err => err && console.error(err);
 
 module.exports = {
-  autoDetectSeparator,
+  getCommands,
+  determineMost,
   toColumnName,
   errorLog
 };
